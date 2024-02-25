@@ -1,0 +1,67 @@
+// ignore_for_file: prefer_const_constructors
+//main.dart
+import 'package:fl_app1/pages/first_page.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      //debug
+      debugShowCheckedModeBanner: false,
+      home: FirstPage(),
+    );
+  }
+}
+//first_page.dart
+import 'package:fl_app1/pages/second_page.dart';
+import 'package:flutter/material.dart';
+
+class FirstPage extends StatelessWidget {
+  const FirstPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("1st page"),
+        backgroundColor: Colors.blue,
+      ),
+      body: Center(
+          child: ElevatedButton(
+        child: Text("go to next page"),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondPage(),
+            ),
+          );
+        },
+      )),
+    );
+  }
+}
+
+//second_page.dart
+import 'package:flutter/material.dart';
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("2nd page"),
+        backgroundColor: Colors.amber,
+      ),
+    );
+  }
+}
